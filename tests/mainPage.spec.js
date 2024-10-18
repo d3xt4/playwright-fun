@@ -1,5 +1,7 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "../fixture/PageObjectFixture";
 
-test('Just a test for loading base page', async ({page}) => {
-    await page.goto('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+test('Just a test for loading base page', async ({page, loginPage}) => {
+    await page.goto('auth/login');
+    await expect(loginPage.loginBtn).toBeVisible();
+    await loginPage.loginProcess();
 });
