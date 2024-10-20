@@ -9,7 +9,14 @@ export class LoginPage{
     }
 
     loginProcess = async () => {
-        await this.usernameInput.fill('Admin');
-        await this.passwordInput.fill('Admin123');
-    }
+        const usernameText = await this.usernameFetch.textContent();
+        const passwordText = await this.passwordFetch.textContent();
+        const usernameId = usernameText.slice(11);
+        const passwordId = passwordText.slice(11);
+        await this.usernameFetch
+        await this.passwordFetch
+        await this.usernameInput.fill(usernameId);
+        await this.passwordInput.fill(passwordId);
+        await this.loginBtn.click();
+    };
 };
