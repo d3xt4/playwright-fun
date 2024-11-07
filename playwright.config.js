@@ -29,14 +29,26 @@ module.exports = defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    // storageState: './auth/login.json'
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+        name: 'setup',
+        use: { 
+          ...devices['Desktop Chrome'] 
+        },
+        testMatch: /.*\.setup\.js/,
     },
+    {
+        name: 'after-login',
+        use: { 
+          ...devices['Desktop Chrome'],
+          storageState: './auth/login.json'
+        },
+        dependencies: ['setup']
+    }
 
     // {
     //   name: 'firefox',

@@ -5,16 +5,16 @@ export class LoginPage{
         this.usernameInput = page.locator('[placeholder="Username"]');
         this.passwordInput = page.locator('[placeholder="Password"]');
         this.usernameFetch = page.locator('div[data-v-8a31f039] p').filter({ hasText: 'Username'});
-        this.passwordFetch = page.locator('div[data-v-8a31f039] p').filter({ hasText: 'Password'});;
+        this.passwordFetch = page.locator('div[data-v-8a31f039] p').filter({ hasText: 'Password'});
     }
 
     loginProcess = async () => {
+        // getting credentials from the text on the page
         const usernameText = await this.usernameFetch.textContent();
         const passwordText = await this.passwordFetch.textContent();
         const usernameId = usernameText.slice(11);
         const passwordId = passwordText.slice(11);
-        await this.usernameFetch
-        await this.passwordFetch
+        // login with above credentials
         await this.usernameInput.fill(usernameId);
         await this.passwordInput.fill(passwordId);
         await this.loginBtn.click();
