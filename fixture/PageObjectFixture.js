@@ -1,6 +1,7 @@
 import { test as base} from "@playwright/test";
 import { LoginPage } from "../page-objects/LoginPage";
 import { SideMenu } from "../page-objects/SideMenu";
+import { DashboardPage } from "../page-objects/dashboardPage";
 
 export const test = base.extend({
     page: async({ baseURL, page }, use) => {
@@ -14,6 +15,10 @@ export const test = base.extend({
 
     sideMenu: async ({page}, use) => {
         await use(new SideMenu(page));
+    },
+
+    dashboardPage: async ({page}, use) => {
+        await use(new DashboardPage(page));
     }
 });
 
